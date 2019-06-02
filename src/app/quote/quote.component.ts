@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Quotes } from '../quotes';
 import { HighestVoteDirective } from '../highest-vote.directive';
+import { QuoteFormComponent } from '../quote-form/quote-form.component';
 
 
 @Component({
@@ -10,13 +11,23 @@ import { HighestVoteDirective } from '../highest-vote.directive';
 })
 export class QuoteComponent implements OnInit {
 
+  @Input() authorName: QuoteFormComponent;
+  @Input() quote: any;
+  @Input() submitByName: any;
+  @Input() quoteUpdate: QuoteFormComponent;
+
+  // @ViewChild(QuoteFormComponent) child: QuoteFormComponent;
+
+
+  Id = 7;
+
   quotes = [
     new Quotes(
       1,
       'Walt Disney',
       'The way to get started is to quit talking and to start doing.',
       'Arnold',
-      new Date(2019, 4, 29),
+      new Date(2019, 2, 10),
       0,
       0
     ),
@@ -25,7 +36,7 @@ export class QuoteComponent implements OnInit {
       'Will Rogers',
       'Do not let yesterday take too much of today.',
       'Arnold',
-      new Date(2019, 4, 29),
+      new Date(2019, 2, 24),
       0,
       0
     ),
@@ -34,7 +45,7 @@ export class QuoteComponent implements OnInit {
       'Winston Churchill',
       'The pessimist sees difficulty in every opportunity. The optimist sees opportunitty in every difficulty.',
       'Arnold',
-      new Date(2019, 4, 29),
+      new Date(2019, 3, 6),
       0,
       0
     ),
@@ -43,7 +54,7 @@ export class QuoteComponent implements OnInit {
       'Unknown',
       'You learn more from failure than from success. Do not let it stop you. Failure builds character.',
       'Arnold',
-      new Date(2019, 4, 29),
+      new Date(2019, 5, 9),
       0,
       0
     ),
@@ -61,10 +72,10 @@ export class QuoteComponent implements OnInit {
     // console.log(quoteDelete);
   }
 
-  quoteUpdate() {
-    // this. new Quotes();
-    console.log("I work ");
-  }
+  // quoteUpdate() {
+  //   // this. new Quotes();
+  //   console.log("I work ");
+  // }
 
   upVoter(index) {
     let i: number;
@@ -96,10 +107,27 @@ export class QuoteComponent implements OnInit {
       arr.push(quote.upVote - quote.dnVote);
     });
     const high = Math.max.apply(Math, arr);
-    console.log(high);
     return high;
   }
 
+
+  // updateQuote(id: any, author: any, description: any, submitter: any, setDate: Date, upVote: any, dnVote: number) {
+  //   author = this.authorName.value;
+  //   description = this.quote.value;
+  //   submitter = this.submitByName.value;
+
+  //   console.log('author: ' + author);
+  //   console.log('desc: ' + description);
+  //   console.log('submitter: ' + submitter);
+  //   id = this.Id++;
+  //   console.log('id: ' + id);
+  //   upVote = 0;
+  //   dnVote = 0;
+  //   // this.quotes.unshift({ id, by, description, setDate, upVote, dnVote });
+  //   this.quotes = [];
+  //   this.quotes.unshift(id, author, description, submitter, new Date(2019, 4, 29), upVote, dnVote);
+
+  // }
 
   constructor() { }
 
@@ -112,6 +140,8 @@ export class QuoteComponent implements OnInit {
     console.log(arr);
     const high = Math.max.apply(Math, arr);
     console.log('Highest ' + high);
+
+    // this.child.updateQuote();
   }
 
 }
