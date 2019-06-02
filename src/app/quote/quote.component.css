@@ -1,0 +1,29 @@
+h1{
+  color: white;
+}
+.intro {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5% 0;
+}
+
+.intro div {
+  display: block;
+  color: black;
+  /* margin: 2% 0; */
+  padding: 30px 20px;
+  width: 700px;
+  max-width: 100;
+  background: white;
+  text-align: left;
+}
+
+.intro .new-quote {
+  width: 400px;
+  max-width: 100%;
+  padding: 20px 20px;
+  background: rgb(2, 143, 199);
+}
+
