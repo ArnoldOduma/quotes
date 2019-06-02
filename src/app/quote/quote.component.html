@@ -2,7 +2,8 @@
 <section class="intro container ">
   <div>
 
-    <p>Inspirational quotes and motivational sayings have an amazing ability to change the way we feel about life. This
+    <p appHighestVote>Inspirational quotes and motivational sayings have an amazing ability to change the way we feel
+      about life. This
       is
       why i find them so interesting and crucial on our paths to success. <br> So whats the secret? <br>The way you
       think
@@ -16,5 +17,30 @@
   </div>
 </section>
 
+<section class="quote-section">
+  <h3> MOTIVATIONAL QUOTES</h3>
+  <div class="quotes-cont">
+
+    <div class="quotes" *ngFor="let quote of quotes; let i = index;let j = index;">
+      <p></p><br>
+      <p class="date">{{quote.setDate | date}}</p>
+      <p class="quote-desc">{{quote.description}}<br> <span>...{{quote.author}}</span></p>
+      <!-- App quote details -->
+      <app-quote-details *ngIf='quote.showDescription' [quote]='quote' [showDesc]='showDesc(i)'></app-quote-details>
+      <!-- Votes -->
+      <div class="votes">
+        <img src="../../assets/img/up.png" alt="" height="100%"><span>{{quote.upVote}}</span>
+        <img src="../../assets/img/dn.png" alt="" height="100%"><span class="dn">{{quote.dnVote}}</span>
+      </div>
+      <div *ngIf='quote.showBtn'>
+        <button (click)='showDesc(i)'>Description</button>
+      </div>
 
 
+
+
+    </div>
+
+  </div>
+
+</section>

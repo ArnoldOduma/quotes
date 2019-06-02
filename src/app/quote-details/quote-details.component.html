@@ -1,3 +1,13 @@
-<p>
-  quote-details works!
-</p>
+<div class="quote-details">
+  author: {{quote.author}}
+  <div class="votes">
+    Total Up Votes: <span>{{quote.upVote}}</span>
+  </div>
+
+  <p>Created by : {{quote.submittedBy}} on </p>
+
+  <div *ngIf='quote.showBtn'>
+    <button class="hide" (click)='showDesc'> Hide Description</button>
+    <button>Delete</button>
+  </div>
+</div>
