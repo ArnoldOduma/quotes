@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Quotes } from '../quotes';
-import { QuoteComponent } from '../quote/quote.component';
 import { FormControl } from '@angular/forms';
+import { QuoteComponent } from '../quote/quote.component';
 
 
 @Component({
@@ -12,42 +12,35 @@ import { FormControl } from '@angular/forms';
 export class QuoteFormComponent implements OnInit {
 
   @Input() quotes: QuoteComponent;
-  @Output() quoteUpdate = new EventEmitter<boolean>();
 
-  newQuote = new Quotes(0, '', '', '', new Date(2019, 4, 29), 0, 0);
+  @Output() quoteUpdate = new EventEmitter();
 
   authorName = new FormControl('');
   quote = new FormControl('');
   submitByName = new FormControl('');
 
-  updateQuote(complete, index) {
-    console.log("Emitted");
-    this.quoteUpdate.emit(complete);
-
+  updateQuote() {
+    let author = this.authorName.value;
+    let description = this.quote.value;
+    let submitter = this.submitByName.value;
+    // this.quotes = [
+    //   new Quotes(6,
+    //     author,
+    //     description,
+    //     submitter,
+    //     new Date(),
+    //     0,
+    //     0)
+    // ];
+    // this.quotes.unshift(id,author,description,submitter,new Date(),0,0);
+    console.log(author);
+    console.log(submitter);
+    console.log(this.quotes[1]);
   }
-
-  // updateQuote(id: number, by: string, description: string, setDate: Date, upVote: number, dnVote: number) {
-  //   by = this.authorName.value;
-  //   description = this.quote.value;
-  //   console.log(by);
-  //   console.log(description);
-  //   id = 7;
-  //   upVote = 0;
-  //   dnVote = 0;
-  //   // this.quotes.unshift({ id, by, description, setDate, upVote, dnVote });
-  //   this.newQuote = new Quotes(0, '', '', '', new Date(2019, 4, 29), 0, 0);
-
-  //   by = '';
-  //   description = '';
-  // }
-
   constructor() { }
 
   ngOnInit() {
-    this.newQuote = new Quotes(0, '', '', '', new Date(2019, 4, 29), 0, 0);
 
-
-    // this.quoteUpdate.
   }
 
 }
