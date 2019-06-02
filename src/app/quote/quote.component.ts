@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quotes } from '../quotes';
+import { HighestVoteDirective } from '../highest-vote.directive';
 
 
 @Component({
@@ -55,20 +56,62 @@ export class QuoteComponent implements OnInit {
 
   deleteQuote(quoteDelete, index) {
     if (quoteDelete) {
-      this.quotes.splice(index, 1); 
-      console.log(quoteDelete);
+      this.quotes.splice(index, 1);
     }
     // console.log(quoteDelete);
   }
 
   quoteUpdate() {
     // this. new Quotes();
-    console.log("Iwork ");
+    console.log("I work ");
   }
+
+  upVoter(index) {
+    let i: number;
+    i = this.quotes[index].upVote;
+    i++;
+    this.quotes[index].upVote = i;
+    console.log('this i: ' + i);
+
+    let arr = [];
+    this.quotes.forEach(quote => {
+      arr.push(quote.upVote - quote.dnVote);
+    });
+    console.log(arr);
+    const high = Math.max.apply(Math, arr);
+    console.log('Highest ' + high);
+    return high;
+  }
+  dnVoter(index) {
+    let j: number;
+    j = this.quotes[index].dnVote;
+    j++;
+    this.quotes[index].dnVote = j;
+  }
+
+
+  highest(arr) {
+    arr = [];
+    this.quotes.forEach(quote => {
+      arr.push(quote.upVote - quote.dnVote);
+    });
+    const high = Math.max.apply(Math, arr);
+    console.log(high);
+    return high;
+  }
+
 
   constructor() { }
 
   ngOnInit() {
+
+    let arr = [];
+    this.quotes.forEach(quote => {
+      arr.push(quote.upVote - quote.dnVote);
+    });
+    console.log(arr);
+    const high = Math.max.apply(Math, arr);
+    console.log('Highest ' + high);
   }
 
 }
