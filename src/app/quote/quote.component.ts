@@ -53,10 +53,22 @@ export class QuoteComponent implements OnInit {
     this.quotes[index].showBtn = !this.quotes[index].showBtn;
   }
 
+  deleteQuote(quoteDelete, index) {
+    if (quoteDelete) {
+      this.quotes.splice(index, 1); 
+      console.log(quoteDelete);
+    }
+    // console.log(quoteDelete);
+  }
+
+  quoteUpdate() {
+    // this. new Quotes();
+    console.log("Iwork ");
+  }
+
   constructor() { }
 
   ngOnInit() {
-    this.showDesc;
   }
 
 }

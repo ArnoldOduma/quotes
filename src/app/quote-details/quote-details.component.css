@@ -1,23 +1,31 @@
-.quote-details{
-  box-shadow: 5px -5px 5px rgba(255,255,255,0.4);
+.quote-details {
+  box-shadow: 5px -5px 5px rgba(255, 255, 255, 0.4);
 }
+
+.btns {
+  position: absolute;
+}
+
 button {
   background: rgb(194, 1, 1);
-  margin-top: 20px;
   padding: 1px 10px;
+
 }
-.hide{
+
+.hide {
   margin-right: 20px;
   background: black;
 }
+
 .votes {
   max-width: 200px;
   z-index: 300;
-  margin-top: 30px;
 }
-.votes img{
+
+.votes img {
   height: 25px;
 }
+
 .votes span {
   display: inline-block;
   margin: 5px;
@@ -33,6 +41,7 @@ button {
   background: rgba(255, 0, 0, 0.884);
   color: white;
 }
+
 .votes img {
   display: inline-block;
   cursor: pointer;
