@@ -16,9 +16,6 @@ export class QuoteComponent implements OnInit {
   @Input() submitByName: any;
   @Input() quoteUpdate: QuoteFormComponent;
 
-  // @ViewChild(QuoteFormComponent) child: QuoteFormComponent;
-
-
   Id = 7;
 
   quotes = [
@@ -67,15 +64,11 @@ export class QuoteComponent implements OnInit {
 
   deleteQuote(quoteDelete, index) {
     if (quoteDelete) {
+
       this.quotes.splice(index, 1);
     }
-    // console.log(quoteDelete);
   }
 
-  // quoteUpdate() {
-  //   // this. new Quotes();
-  //   console.log("I work ");
-  // }
 
   upVoter(index) {
     let i: number;
@@ -83,16 +76,8 @@ export class QuoteComponent implements OnInit {
     i++;
     this.quotes[index].upVote = i;
     console.log('this i: ' + i);
-
-    let arr = [];
-    this.quotes.forEach(quote => {
-      arr.push(quote.upVote - quote.dnVote);
-    });
-    console.log(arr);
-    const high = Math.max.apply(Math, arr);
-    console.log('Highest ' + high);
-    return high;
   }
+
   dnVoter(index) {
     let j: number;
     j = this.quotes[index].dnVote;
@@ -100,34 +85,20 @@ export class QuoteComponent implements OnInit {
     this.quotes[index].dnVote = j;
   }
 
-
   highest(arr) {
     arr = [];
     this.quotes.forEach(quote => {
-      arr.push(quote.upVote - quote.dnVote);
+      arr.push(quote.upVote);
     });
     const high = Math.max.apply(Math, arr);
     return high;
   }
 
-
-  // updateQuote(id: any, author: any, description: any, submitter: any, setDate: Date, upVote: any, dnVote: number) {
-  //   author = this.authorName.value;
-  //   description = this.quote.value;
-  //   submitter = this.submitByName.value;
-
-  //   console.log('author: ' + author);
-  //   console.log('desc: ' + description);
-  //   console.log('submitter: ' + submitter);
-  //   id = this.Id++;
-  //   console.log('id: ' + id);
-  //   upVote = 0;
-  //   dnVote = 0;
-  //   // this.quotes.unshift({ id, by, description, setDate, upVote, dnVote });
-  //   this.quotes = [];
-  //   this.quotes.unshift(id, author, description, submitter, new Date(2019, 4, 29), upVote, dnVote);
-
-  // }
+  addQuote(quote) {
+    this.quotes.unshift(quote);
+    // this.quotes[index].id = this.quotes.length++;
+    console.log(this.quotes);
+  }
 
   constructor() { }
 
@@ -137,11 +108,8 @@ export class QuoteComponent implements OnInit {
     this.quotes.forEach(quote => {
       arr.push(quote.upVote - quote.dnVote);
     });
-    console.log(arr);
+    // console.log(arr);
     const high = Math.max.apply(Math, arr);
-    console.log('Highest ' + high);
-
-    // this.child.updateQuote();
   }
 
 }

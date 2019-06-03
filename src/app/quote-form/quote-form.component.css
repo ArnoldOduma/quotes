@@ -15,3 +15,9 @@ textarea:focus{
   color: black;
 
 }
+button{
+  padding: 1px 10px;
+  color: white;
+  outline: none;
+}
+

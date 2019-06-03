@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Quotes } from '../quotes';
-import { FormControl } from '@angular/forms';
-import { QuoteComponent } from '../quote/quote.component';
 
 
 @Component({
@@ -11,32 +9,16 @@ import { QuoteComponent } from '../quote/quote.component';
 })
 export class QuoteFormComponent implements OnInit {
 
-  @Input() quotes: QuoteComponent;
+  @Input() quotes: Quotes;
 
-  @Output() quoteUpdate = new EventEmitter();
+  @Output() quoteUpdate = new EventEmitter<Quotes>();
 
-  authorName = new FormControl('');
-  quote = new FormControl('');
-  submitByName = new FormControl('');
-
-  updateQuote() {
-    let author = this.authorName.value;
-    let description = this.quote.value;
-    let submitter = this.submitByName.value;
-    // this.quotes = [
-    //   new Quotes(6,
-    //     author,
-    //     description,
-    //     submitter,
-    //     new Date(),
-    //     0,
-    //     0)
-    // ];
-    // this.quotes.unshift(id,author,description,submitter,new Date(),0,0);
-    console.log(author);
-    console.log(submitter);
-    console.log(this.quotes[1]);
+  newQuote = new Quotes( 0, '', '', '', new Date(), 0, 0 );
+  submit() {
+    this.quoteUpdate.emit(this.newQuote);
+    
   }
+
   constructor() { }
 
   ngOnInit() {

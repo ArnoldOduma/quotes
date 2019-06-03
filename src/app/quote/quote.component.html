@@ -13,7 +13,7 @@
 
   </div>
   <div class="new-quote">
-    <app-quote-form [quotes]='quotes' ></app-quote-form>
+    <app-quote-form  (quoteUpdate)='addQuote($event)' ></app-quote-form>
   </div>
 </section>
 
@@ -22,13 +22,13 @@
   <div class="high-cont" *ngFor="let quote of quotes; let i = index; let j = index;">
 
       <div class="high-quote" appHighestVote *ngIf='quote.upVote == highest() && highest() > 0'>
-        <h3>Highest as voted by you</h3>
+        <h5>Highest as voted by you</h5>
         <p></p><br>
         <p class="date">{{quote.setDate | date}}</p>
         <p class="quote-desc">{{quote.description}}<br> <span>...{{quote.author}}</span></p>
-        <div class="votes"><img src="../../assets/img/up.png" alt="" height="100%"
-            (click)='upVoter(i);highest(i);'><span>{{quote.upVote}}</span><img src="../../assets/img/dn.png" alt=""
-            height="100%" (click)='dnVoter(j);highest(j)'><span class="dn">{{quote.dnVote}}</span></div>
+        <div class="votes"><img src="./assets/img/up.png" alt="" height="100%"
+            (click)='upVoter(i);highest();'><span>{{quote.upVote}}</span><img src="./assets/img/dn.png" alt=""
+            height="100%" (click)='dnVoter(j)'><span class="dn">{{quote.dnVote}}</span></div>
       </div>
   </div>
   <div class="quotes-cont">
