@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 
 @Directive({
@@ -6,13 +6,8 @@ import { Directive, ElementRef, Input } from '@angular/core';
 })
 export class HighestVoteDirective {
 
-
-
-
   constructor(el: ElementRef) {
     el.nativeElement.style.backgroundColor = 'rgba(249, 165, 49, 0.2)';
   }
-
-
 
 }

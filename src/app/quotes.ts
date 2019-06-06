@@ -8,7 +8,8 @@ export class Quotes {
     public submittedBy: string,
     public setDate: Date,
     public upVote: number,
-    public dnVote: number) {
+    public dnVote: number
+    ) {
       this.showDescription = false;
       this.showBtn = true;
   }

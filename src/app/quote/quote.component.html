@@ -27,12 +27,16 @@
       <p class="date">{{quote.setDate | date}}</p>
       <p class="quote-desc">{{quote.description}}<br> <span>...{{quote.author}}</span></p>
       <div class="votes">
-          <i class="far fa-thumbs-up" (click)='upVoter(i);highest();'></i><span>{{quote.upVote}}</span>
-          <i class="far fa-thumbs-down" (click)='dnVoter(j)'></i><span class="dn">{{quote.dnVote}}</span></div>
+        <span (click)='upVoter(i);highest();'>
+          <i class="far fa-thumbs-up"></i>Up<span>{{quote.upVote}}</span>
+        </span>
+        <span (click)='dnVoter(i)'>
+          <i class="far fa-thumbs-down"></i>Dn<span class="dn">{{quote.dnVote}}</span>
+        </span>
+      </div>
     </div>
   </div>
   <div class="quotes-cont">
-
     <div class="quotes" *ngFor="let quote of quotes; let i = index;let j = index;">
       <p></p><br>
       <p class="date">{{quote.setDate | date}}</p>
@@ -42,8 +46,12 @@
         (quoteDelete)='deleteQuote($event, i)'></app-quote-details>
       <!-- Votes -->
       <div class="votes">
-        <i class="far fa-thumbs-up" (click)='upVoter(i);highest(i);'></i><span>{{quote.upVote}}</span>
-        <i class="far fa-thumbs-down" (click)='dnVoter(i)'></i><span class="dn">{{quote.dnVote}}</span>
+        <span (click)='upVoter(i);highest();'>
+          <i class="far fa-thumbs-up"></i>Up<span>{{quote.upVote}}</span>
+        </span>
+        <span (click)='dnVoter(i)'>
+          <i class="far fa-thumbs-down"></i>Dn<span class="dn">{{quote.dnVote}}</span>
+        </span>
       </div>
       <div *ngIf='quote.showBtn'>
         <button (click)='showDesc(i)'>Description</button>

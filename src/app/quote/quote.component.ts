@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Quotes } from '../quotes';
-import { HighestVoteDirective } from '../highest-vote.directive';
 import { QuoteFormComponent } from '../quote-form/quote-form.component';
 
 
@@ -96,7 +95,6 @@ export class QuoteComponent implements OnInit {
 
   addQuote(quote) {
     this.quotes.unshift(quote);
-    // this.quotes[index].id = this.quotes.length++;
     console.log(this.quotes);
   }
 
@@ -104,11 +102,10 @@ export class QuoteComponent implements OnInit {
 
   ngOnInit() {
 
-    let arr = [];
+    const arr = [];
     this.quotes.forEach(quote => {
       arr.push(quote.upVote - quote.dnVote);
     });
-    // console.log(arr);
     const high = Math.max.apply(Math, arr);
   }
 
